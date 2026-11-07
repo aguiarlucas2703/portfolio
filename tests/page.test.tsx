@@ -21,4 +21,14 @@ describe("portfolio home", () => {
     render(<Home />);
     expect(screen.getByTestId("hero-smoke")).toHaveAttribute("aria-hidden", "true");
   });
+
+  it("mostra um controle acessível para voltar ao topo após rolar", async () => {
+    render(<Home />);
+
+    expect(screen.queryByRole("button", { name: "Voltar ao topo" })).not.toBeInTheDocument();
+    Object.defineProperty(window, "scrollY", { configurable: true, value: 600 });
+    window.dispatchEvent(new Event("scroll"));
+
+    expect(await screen.findByRole("button", { name: "Voltar ao topo" })).toBeInTheDocument();
+  });
 });

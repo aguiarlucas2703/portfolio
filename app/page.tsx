@@ -1,4 +1,5 @@
 import { profile, stackGroups } from "../src/content/site";
+import { BackToTop } from "./components/BackToTop";
 import { SmokeCanvas } from "./components/SmokeCanvas";
 
 export default function Home() {
@@ -111,6 +112,7 @@ export default function Home() {
             <span>© 2026 Lucas Aguiar</span>
           </div>
         </footer>
+      <BackToTop />
       </div>
     </main>
   );

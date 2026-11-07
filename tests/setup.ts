@@ -1,5 +1,10 @@
 import { cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
-import { afterEach } from "vitest";
+import { afterEach, vi } from "vitest";
+
+Object.defineProperty(HTMLCanvasElement.prototype, "getContext", {
+  configurable: true,
+  value: vi.fn(() => null),
+});
 
 afterEach(() => cleanup());

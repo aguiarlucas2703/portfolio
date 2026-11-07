@@ -11,7 +11,8 @@ Em desenvolvimento.
 ## Direção inicial
 
 - Interface autoral, escura e tipográfica.
-- Animações sutis e acessíveis.
+- Fumaça procedural que reage ao movimento do ponteiro.
+- Animações sutis, responsivas e acessíveis.
 - Conteúdo separado da apresentação para facilitar atualizações.
 - Projetos e experiências adicionados somente após revisão do autor.
 

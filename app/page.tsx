@@ -1,4 +1,5 @@
 import { profile, stackGroups } from "../src/content/site";
+import { SmokeCanvas } from "./components/SmokeCanvas";
 
 export default function Home() {
   return (
@@ -19,21 +20,25 @@ export default function Home() {
       </header>
 
       <div id="content">
-        <section className="hero section-shell" aria-labelledby="hero-title">
-          <div className="hero-copy">
-            <p className="eyebrow">Portfólio pessoal · 2026</p>
-            <h1 id="hero-title">
-              Lucas <em>Aguiar</em>
-            </h1>
-            <p className="hero-intro">{profile.intro}</p>
-            <a className="text-link" href="#work">
-              Conhecer o trabalho <span aria-hidden="true">↘</span>
-            </a>
-          </div>
-          <div className="hero-index" aria-hidden="true">
-            <span>01</span>
-            <i />
-            <span>06</span>
+        <section className="hero" aria-labelledby="hero-title">
+          <SmokeCanvas />
+          <div className="hero-vignette" aria-hidden="true" />
+          <div className="hero-inner section-shell">
+            <div className="hero-copy">
+              <p className="eyebrow">Portfólio pessoal · 2026</p>
+              <h1 id="hero-title">
+                Lucas <em>Aguiar</em>
+              </h1>
+              <p className="hero-intro">{profile.intro}</p>
+              <a className="text-link" href="#work">
+                Conhecer o trabalho <span aria-hidden="true">↘</span>
+              </a>
+            </div>
+            <div className="hero-index" aria-hidden="true">
+              <span>01</span>
+              <i />
+              <span>06</span>
+            </div>
           </div>
         </section>
 

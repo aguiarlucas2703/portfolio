@@ -16,4 +16,9 @@ describe("portfolio home", () => {
     expect(within(navigation).getByRole("link", { name: "Sobre" })).toHaveAttribute("href", "#about");
     expect(within(navigation).getByRole("link", { name: "Contato" })).toHaveAttribute("href", "#contact");
   });
+
+  it("mantém a camada de fumaça interativa no hero", () => {
+    render(<Home />);
+    expect(screen.getByTestId("hero-smoke")).toHaveAttribute("aria-hidden", "true");
+  });
 });

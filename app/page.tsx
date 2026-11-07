@@ -1,0 +1,112 @@
+import { profile, stackGroups } from "../src/content/site";
+
+export default function Home() {
+  return (
+    <main id="top">
+      <a className="skip-link" href="#content">
+        Ir para o conteúdo
+      </a>
+
+      <header className="site-header">
+        <a className="brand" href="#top" aria-label="Voltar ao início">
+          {profile.shortName}
+        </a>
+        <nav aria-label="Navegação principal">
+          <a href="#work">Projetos</a>
+          <a href="#about">Sobre</a>
+          <a href="#contact">Contato</a>
+        </nav>
+      </header>
+
+      <div id="content">
+        <section className="hero section-shell" aria-labelledby="hero-title">
+          <div className="hero-copy">
+            <p className="eyebrow">Portfólio pessoal · 2026</p>
+            <h1 id="hero-title">
+              Lucas <em>Aguiar</em>
+            </h1>
+            <p className="hero-intro">{profile.intro}</p>
+            <a className="text-link" href="#work">
+              Conhecer o trabalho <span aria-hidden="true">↘</span>
+            </a>
+          </div>
+          <div className="hero-index" aria-hidden="true">
+            <span>01</span>
+            <i />
+            <span>06</span>
+          </div>
+        </section>
+
+        <section className="manifesto section-shell" aria-labelledby="manifesto-title">
+          <p className="eyebrow">Uma primeira direção</p>
+          <h2 id="manifesto-title">
+            Código com intenção, interfaces com <em>presença.</em>
+          </h2>
+        </section>
+
+        <section className="work section-shell" id="work" aria-labelledby="work-title">
+          <div className="section-heading">
+            <p className="eyebrow">Projetos selecionados</p>
+            <h2 id="work-title">
+              O trabalho entra <em>aqui.</em>
+            </h2>
+          </div>
+          <div className="work-placeholder">
+            <span className="work-number">01</span>
+            <div>
+              <h3>Primeiro case em curadoria</h3>
+              <p>
+                Esta área será preenchida com um projeto real, seu contexto,
+                decisões técnicas e resultado.
+              </p>
+            </div>
+            <span className="work-status">Em construção</span>
+          </div>
+        </section>
+
+        <section className="about section-shell" id="about" aria-labelledby="about-title">
+          <div className="section-heading">
+            <p className="eyebrow">Sobre e stack</p>
+            <h2 id="about-title">
+              Em <em>movimento.</em>
+            </h2>
+          </div>
+          <div className="about-grid">
+            <p className="about-copy">
+              Sou Lucas, desenvolvedor full-stack. Esta seção será refinada com
+              sua trajetória, formas de trabalhar e projetos que melhor
+              representam sua evolução.
+            </p>
+            <div className="stack-list">
+              {stackGroups.map((group) => (
+                <div className="stack-group" key={group.label}>
+                  <h3>{group.label}</h3>
+                  <ul>
+                    {group.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <footer className="footer section-shell" id="contact">
+          <div>
+            <p className="eyebrow">Vamos conversar</p>
+            <h2>
+              Um projeto começa com uma <em>boa pergunta.</em>
+            </h2>
+          </div>
+          <div className="footer-meta">
+            <a className="text-link" href="mailto:seu-email@exemplo.com">
+              seu-email@exemplo.com <span aria-hidden="true">↗</span>
+            </a>
+            <span>© 2026 Lucas Aguiar</span>
+          </div>
+        </footer>
+      </div>
+    </main>
+  );
+}

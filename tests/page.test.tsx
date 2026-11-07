@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import Home from "../app/page";
 
@@ -11,8 +11,9 @@ describe("portfolio home", () => {
 
   it("oferece navegação para as seções principais", () => {
     render(<Home />);
-    expect(screen.getByRole("link", { name: "Projetos" })).toHaveAttribute("href", "#work");
-    expect(screen.getByRole("link", { name: "Sobre" })).toHaveAttribute("href", "#about");
-    expect(screen.getByRole("link", { name: "Contato" })).toHaveAttribute("href", "#contact");
+    const navigation = screen.getByRole("navigation", { name: "Navegação principal" });
+    expect(within(navigation).getByRole("link", { name: "Projetos" })).toHaveAttribute("href", "#work");
+    expect(within(navigation).getByRole("link", { name: "Sobre" })).toHaveAttribute("href", "#about");
+    expect(within(navigation).getByRole("link", { name: "Contato" })).toHaveAttribute("href", "#contact");
   });
 });

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Lucas Aguiar — Desenvolvedor full-stack",
+  title: "aguiarlucas",
   description: "Portfólio pessoal de Lucas Aguiar dos Santos.",
 };
 

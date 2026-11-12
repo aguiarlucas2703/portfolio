@@ -1,4 +1,4 @@
-import { profile, stackGroups } from "../src/content/site";
+import { education, profile, stackGroups } from "../src/content/site";
 import { BackToTop } from "./components/BackToTop";
 import { SmokeCanvas } from "./components/SmokeCanvas";
 
@@ -16,6 +16,7 @@ export default function Home() {
         <nav aria-label="Navegação principal">
           <a href="#work">Projetos</a>
           <a href="#about">Sobre</a>
+          <a href="#education">Formação</a>
           <a href="#contact">Contato</a>
         </nav>
       </header>
@@ -79,9 +80,9 @@ export default function Home() {
           </div>
           <div className="about-grid">
             <p className="about-copy">
-              Sou Lucas, desenvolvedor full-stack. Esta seção será refinada com
-              sua trajetória, formas de trabalhar e projetos que melhor
-              representam sua evolução.
+              Sou Lucas, desenvolvedor full-stack. Gosto de compreender o
+              produto por inteiro e construir soluções que equilibram
+              interface, lógica e qualidade.
             </p>
             <div className="stack-list">
               {stackGroups.map((group) => (
@@ -95,6 +96,33 @@ export default function Home() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section
+          className="education section-shell"
+          id="education"
+          aria-labelledby="education-title"
+        >
+          <div className="section-heading">
+            <p className="eyebrow">Formação</p>
+            <h2 id="education-title">
+              Uma base para seguir <em>evoluindo.</em>
+            </h2>
+          </div>
+          <div className="education-list">
+            {education.map((item) => (
+              <article className="education-item" key={item.title}>
+                <p className="education-type">{item.type}</p>
+                <div>
+                  <h3>{item.title}</h3>
+                  {"institution" in item ? (
+                    <p className="education-institution">{item.institution}</p>
+                  ) : null}
+                </div>
+                <p className="education-status">{item.status}</p>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -112,7 +140,7 @@ export default function Home() {
             <span>© 2026 Lucas Aguiar</span>
           </div>
         </footer>
-      <BackToTop />
+        <BackToTop />
       </div>
     </main>
   );

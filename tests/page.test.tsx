@@ -14,7 +14,22 @@ describe("portfolio home", () => {
     const navigation = screen.getByRole("navigation", { name: "Navegação principal" });
     expect(within(navigation).getByRole("link", { name: "Projetos" })).toHaveAttribute("href", "#work");
     expect(within(navigation).getByRole("link", { name: "Sobre" })).toHaveAttribute("href", "#about");
+    expect(within(navigation).getByRole("link", { name: "Formação" })).toHaveAttribute("href", "#education");
     expect(within(navigation).getByRole("link", { name: "Contato" })).toHaveAttribute("href", "#contact");
+  });
+
+  it("inclui Kotlin entre as tecnologias já utilizadas", () => {
+    render(<Home />);
+    expect(screen.getByText("Kotlin")).toBeInTheDocument();
+  });
+
+  it("apresenta a graduação e a pós-graduação", () => {
+    render(<Home />);
+    expect(screen.getByText("Universidade Federal do Acre")).toBeInTheDocument();
+    expect(screen.getByText(/Sistemas de Informação/)).toBeInTheDocument();
+    expect(screen.getByText(/2022–2026/)).toBeInTheDocument();
+    expect(screen.getByText("Inteligência Artificial para Engenharia de Testes de Software")).toBeInTheDocument();
+    expect(screen.getByText("Em andamento")).toBeInTheDocument();
   });
 
   it("mantém a camada de fumaça interativa no hero", () => {

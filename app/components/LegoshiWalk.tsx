@@ -124,11 +124,10 @@ export function LegoshiWalk() {
   }, []);
 
   return (
-    <figure className="legoshi-trail section-shell">
-      <div className="legoshi-track" aria-hidden="true">
+    <div className="legoshi-trail section-shell" aria-hidden="true">
+      <div className="legoshi-track">
         <canvas ref={spriteRef} className="legoshi-sprite" width={WIDTH} height={HEIGHT} />
       </div>
-      <figcaption>Legoshi · Beastars</figcaption>
-    </figure>
+    </div>
   );
 }

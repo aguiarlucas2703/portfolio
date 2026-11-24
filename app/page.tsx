@@ -1,4 +1,4 @@
-import { education, profile, stackGroups } from "../src/content/site";
+import { education, profile, projects, stackGroups } from "../src/content/site";
 import { BackToTop } from "./components/BackToTop";
 import { SmokeCanvas } from "./components/SmokeCanvas";
 
@@ -55,19 +55,41 @@ export default function Home() {
           <div className="section-heading">
             <p className="eyebrow">Projetos selecionados</p>
             <h2 id="work-title">
-              O trabalho entra <em>aqui.</em>
+              Projetos que já saíram <em>do papel.</em>
             </h2>
           </div>
-          <div className="work-placeholder">
-            <span className="work-number">01</span>
-            <div>
-              <h3>Primeiro case em curadoria</h3>
-              <p>
-                Esta área será preenchida com um projeto real, seu contexto,
-                decisões técnicas e resultado.
-              </p>
-            </div>
-            <span className="work-status">Em construção</span>
+          <div className="work-list">
+            {projects.map((project) => (
+              <article className="work-project" key={project.title}>
+                <div className="work-project-heading">
+                  <span className="work-number">{project.number}</span>
+                  <div>
+                    <p className="eyebrow">{project.context}</p>
+                    <h3>{project.title}</h3>
+                    <p className="work-summary">{project.summary}</p>
+                  </div>
+                  <span className="work-status">{project.visibility}</span>
+                </div>
+                <div className="work-project-details">
+                  <div>
+                    <p className="eyebrow">Minha contribuição</p>
+                    <ul className="work-contributions">
+                      {project.contributions.map((contribution) => (
+                        <li key={contribution}>{contribution}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="eyebrow">Tecnologias</p>
+                    <ul className="work-technologies">
+                      {project.technologies.map((technology) => (
+                        <li key={technology}>{technology}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 

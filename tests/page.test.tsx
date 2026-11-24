@@ -18,6 +18,18 @@ describe("portfolio home", () => {
     expect(within(navigation).getByRole("link", { name: "Contato" })).toHaveAttribute("href", "#contact");
   });
 
+  it("apresenta o CAES, seu contexto, contribuições e tecnologias", () => {
+    render(<Home />);
+    const caesCard = screen.getByRole("heading", { name: "CAES" }).closest("article");
+    expect(caesCard).not.toBeNull();
+    const caes = within(caesCard!);
+    expect(screen.getByText(/Capacitação Web Full-stack WebAcademy/)).toBeInTheDocument();
+    expect(caes.getByText(/endpoints REST para consulta, criação, atualização e remoção de estudantes/i)).toBeInTheDocument();
+    expect(caes.getByText(/Repositório privado/)).toBeInTheDocument();
+    expect(caes.getByText("Spring Boot")).toBeInTheDocument();
+    expect(caes.getByText("Angular")).toBeInTheDocument();
+  });
+
   it("inclui Kotlin entre as tecnologias já utilizadas", () => {
     render(<Home />);
     expect(screen.getByText("Kotlin")).toBeInTheDocument();

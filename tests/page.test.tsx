@@ -7,6 +7,11 @@ describe("portfolio home", () => {
     render(<Home />);
     expect(screen.getByRole("heading", { name: /lucas aguiar/i })).toBeInTheDocument();
     expect(screen.getByText(/desenvolvedor full-stack/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "Sou desenvolvedor web full-stack, formado em Sistemas de Informação. Construo aplicações com uma visão do produto como um todo, da lógica à interface, sempre atento à experiência de quem usa.",
+      ),
+    ).toBeInTheDocument();
   });
 
   it("oferece navegação para as seções principais", () => {
@@ -71,7 +76,7 @@ describe("portfolio home", () => {
   it("apresenta a graduação e a pós-graduação", () => {
     render(<Home />);
     expect(screen.getByText("Universidade Federal do Acre")).toBeInTheDocument();
-    expect(screen.getByText(/Sistemas de Informação/)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Sistemas de Informação" })).toBeInTheDocument();
     expect(screen.getByText(/2022–2026/)).toBeInTheDocument();
     expect(screen.getByText("Inteligência Artificial para Engenharia de Testes de Software")).toBeInTheDocument();
     expect(screen.getByText("Em andamento")).toBeInTheDocument();

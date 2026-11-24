@@ -5,7 +5,7 @@ export const profile = {
   email: "lucasaguiar2703@gmail.com",
   github: "https://github.com/aguiarlucas2703",
   intro:
-    "Construo aplicações pensando no produto inteiro — da interface à lógica que sustenta cada experiência.",
+    "Sou desenvolvedor web full-stack, formado em Sistemas de Informação. Construo aplicações com uma visão do produto como um todo, da lógica à interface, sempre atento à experiência de quem usa.",
 };
 
 export const stackGroups = [

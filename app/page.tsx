@@ -1,6 +1,7 @@
 import { education, profile, projects, stackGroups } from "../src/content/site";
 import { GitBranch, Mail } from "lucide-react";
 import { BackToTop } from "./components/BackToTop";
+import { LegoshiWalk } from "./components/LegoshiWalk";
 import { SmokeCanvas } from "./components/SmokeCanvas";
 
 export default function Home() {
@@ -45,12 +46,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="manifesto section-shell" aria-labelledby="manifesto-title">
-          <p className="eyebrow">Uma primeira direção</p>
-          <h2 id="manifesto-title">
-            Código com intenção, interfaces com <em>presença.</em>
-          </h2>
-        </section>
+        <LegoshiWalk />
 
         <section className="work section-shell" id="work" aria-labelledby="work-title">
           <div className="section-heading">

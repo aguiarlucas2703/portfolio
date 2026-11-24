@@ -153,18 +153,38 @@ h1 em, h2 em { color: var(--accent); }
 .hero-index { display: grid; justify-items: center; gap: 0.75rem; color: var(--muted); }
 .hero-index i { display: block; width: 1px; height: clamp(3rem, 15svh, 7rem); background: var(--accent); }
 
-.manifesto, .work, .about, .footer {
+.work, .about, .footer {
   padding-block: clamp(3rem, 7vw, 6rem);
   border-top: 1px solid var(--line);
 }
 
-.manifesto { padding-block: clamp(2rem, 4.5vw, 4rem); }
-.manifesto .eyebrow { margin-bottom: 0.75rem; }
-.manifesto h2 {
-  max-width: 24ch;
-  margin-bottom: 0;
-  font-size: clamp(2rem, 4.5vw, 4rem);
-  line-height: 1;
+.legoshi-trail {
+  padding-block: 0.75rem 1rem;
+  border-top: 1px solid var(--line);
+}
+.legoshi-track {
+  --sprite-width: clamp(3.5rem, 8vw, 4.5rem);
+  position: relative;
+  width: min(100%, 34rem);
+  height: 5.5rem;
+  margin-inline: auto;
+  background: linear-gradient(90deg, transparent, var(--line) 18% 82%, transparent)
+    center bottom / 100% 1px no-repeat;
+}
+.legoshi-sprite {
+  position: absolute;
+  left: calc((100% - var(--sprite-width)) * var(--walk-progress, 0));
+  bottom: 0;
+  width: var(--sprite-width);
+  height: auto;
+  image-rendering: pixelated;
+}
+.legoshi-trail figcaption {
+  margin-top: 0.6rem;
+  color: var(--muted);
+  text-align: center;
+  font-family: var(--display);
+  font-size: 0.85rem;
 }
 .section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; }
 .section-heading h2 { margin-bottom: 0; }
@@ -380,5 +400,6 @@ section[id], footer[id] { scroll-margin-top: 6rem; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  .legoshi-sprite { left: calc((100% - var(--sprite-width)) / 2); }
   .back-to-top { animation: none; }
 }

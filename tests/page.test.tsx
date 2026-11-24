@@ -95,6 +95,12 @@ describe("portfolio home", () => {
     expect(screen.getByTestId("hero-smoke")).toHaveAttribute("aria-hidden", "true");
   });
 
+  it("mostra a referência a Legoshi no lugar do manifesto", () => {
+    render(<Home />);
+    expect(screen.getByText("Legoshi · Beastars").closest("figure")).toBeInTheDocument();
+    expect(screen.queryByText(/Código com intenção/)).not.toBeInTheDocument();
+  });
+
   it("mostra um controle acessível para voltar ao topo após rolar", async () => {
     render(<Home />);
 

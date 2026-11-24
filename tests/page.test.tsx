@@ -30,9 +30,29 @@ describe("portfolio home", () => {
     expect(caes.getByText("Angular")).toBeInTheDocument();
   });
 
+  it("apresenta Astros e SmartFridge com links para os repositórios públicos", () => {
+    render(<Home />);
+    expect(screen.getByRole("heading", { name: "Astros" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Ver código: Astros/i })).toHaveAttribute(
+      "href",
+      "https://github.com/aguiarlucas2703/Astros",
+    );
+    expect(screen.getByText(/acompanhamento da posição da ISS/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "SmartFridge" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Ver código: SmartFridge/i })).toHaveAttribute(
+      "href",
+      "https://github.com/aguiarlucas2703/SmartFridge",
+    );
+    expect(screen.getByText(/quantidade de ingredientes coincidentes/i)).toBeInTheDocument();
+  });
+
   it("inclui Kotlin entre as tecnologias já utilizadas", () => {
     render(<Home />);
-    expect(screen.getByText("Kotlin")).toBeInTheDocument();
+    const technologiesGroup = screen
+      .getByRole("heading", { name: "Tecnologias que já utilizei" })
+      .parentElement;
+    expect(technologiesGroup).not.toBeNull();
+    expect(within(technologiesGroup!).getByText("Kotlin")).toBeInTheDocument();
   });
 
   it("apresenta a graduação e a pós-graduação", () => {

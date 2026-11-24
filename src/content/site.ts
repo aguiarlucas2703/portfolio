@@ -31,6 +31,35 @@ export const projects = [
       "Criei uma primeira tela da área do estudante para visualizar processos seletivos, com dados simulados.",
     ],
     technologies: ["Java 17", "Spring Boot", "MySQL", "Angular", "TypeScript"],
+    repository: null,
+  },
+  {
+    number: "02",
+    title: "Astros",
+    context: "Aplicativo Android nativo · Projeto pessoal",
+    summary:
+      "Aplicativo de astronomia com catálogo de corpos celestes e imagens da NASA, eventos astronômicos, rastreador da Estação Espacial Internacional e atividades interativas.",
+    contributions: [
+      "Estruturei o aplicativo e desenvolvi o catálogo conectado à API de imagens da NASA.",
+      "Implementei quiz, modo de adivinhação, eventos e acompanhamento da posição da ISS.",
+      "Registrei o histórico das partidas no armazenamento local e integrei os dados ao perfil.",
+    ],
+    technologies: ["Kotlin", "Jetpack Compose", "Retrofit", "NASA APIs"],
+    repository: { url: "https://github.com/aguiarlucas2703/Astros", label: "Ver código" },
+  },
+  {
+    number: "03",
+    title: "SmartFridge",
+    context: "Aplicativo mobile · Projeto pessoal",
+    summary:
+      "Aplicativo que organiza ingredientes disponíveis em casa e busca receitas compatíveis, indicando o que já está na despensa e o que falta.",
+    contributions: [
+      "Implementei a seleção de ingredientes e o salvamento local da despensa.",
+      "Integrei a busca à TheMealDB e ordenei os resultados pela quantidade de ingredientes coincidentes.",
+      "Desenvolvi a tradução de ingredientes e receitas para português, com cache local.",
+    ],
+    technologies: ["React Native", "Expo", "JavaScript", "AsyncStorage", "TheMealDB API"],
+    repository: { url: "https://github.com/aguiarlucas2703/SmartFridge", label: "Ver código" },
   },
 ] as const;
 

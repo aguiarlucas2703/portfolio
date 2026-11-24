@@ -68,7 +68,19 @@ export default function Home() {
                     <h3>{project.title}</h3>
                     <p className="work-summary">{project.summary}</p>
                   </div>
-                  <span className="work-status">{project.visibility}</span>
+                  {project.repository ? (
+                    <a
+                      className="project-repository-link"
+                      href={project.repository.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${project.repository.label}: ${project.title} (abre em nova aba)`}
+                    >
+                      {project.repository.label} <span aria-hidden="true">↗</span>
+                    </a>
+                  ) : (
+                    <span className="work-status">Repositório privado</span>
+                  )}
                 </div>
                 <div className="work-project-details">
                   <div>

@@ -2,6 +2,8 @@ export const profile = {
   name: "Lucas Aguiar dos Santos",
   shortName: "Lucas Aguiar",
   role: "Desenvolvedor full-stack",
+  email: "lucasaguiar2703@gmail.com",
+  github: "https://github.com/aguiarlucas2703",
   intro:
     "Construo aplicações pensando no produto inteiro — da interface à lógica que sustenta cada experiência.",
 };

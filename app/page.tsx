@@ -1,4 +1,5 @@
 import { education, profile, projects, stackGroups } from "../src/content/site";
+import { GitBranch, Mail } from "lucide-react";
 import { BackToTop } from "./components/BackToTop";
 import { SmokeCanvas } from "./components/SmokeCanvas";
 
@@ -168,9 +169,23 @@ export default function Home() {
             </h2>
           </div>
           <div className="footer-meta">
-            <a className="text-link" href="mailto:seu-email@exemplo.com">
-              seu-email@exemplo.com <span aria-hidden="true">↗</span>
-            </a>
+            <div className="contact-links" aria-label="Formas de contato">
+              <a className="contact-link" href={`mailto:${profile.email}`}>
+                <Mail aria-hidden="true" focusable="false" size={19} strokeWidth={1.6} />
+                <span>{profile.email}</span>
+              </a>
+              <a
+                className="contact-link"
+                href={profile.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub de Lucas Aguiar (abre em nova aba)"
+              >
+                <GitBranch aria-hidden="true" focusable="false" size={19} strokeWidth={1.6} />
+                <span>GitHub</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
             <span>© 2026 Lucas Aguiar</span>
           </div>
         </footer>

@@ -18,6 +18,19 @@ describe("portfolio home", () => {
     expect(within(navigation).getByRole("link", { name: "Contato" })).toHaveAttribute("href", "#contact");
   });
 
+  it("mostra e-mail e GitHub com links corretos na área de contato", () => {
+    render(<Home />);
+    expect(screen.getByRole("link", { name: "lucasaguiar2703@gmail.com" })).toHaveAttribute(
+      "href",
+      "mailto:lucasaguiar2703@gmail.com",
+    );
+    const github = screen.getByRole("link", { name: "GitHub de Lucas Aguiar (abre em nova aba)" });
+    expect(github).toHaveAttribute("href", "https://github.com/aguiarlucas2703");
+    expect(github).toHaveAttribute("target", "_blank");
+    expect(github).toHaveAttribute("rel", "noopener noreferrer");
+    expect(github.querySelector("svg")).toHaveAttribute("aria-hidden", "true");
+  });
+
   it("apresenta o CAES, seu contexto, contribuições e tecnologias", () => {
     render(<Home />);
     const caesCard = screen.getByRole("heading", { name: "CAES" }).closest("article");

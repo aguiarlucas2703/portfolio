@@ -82,7 +82,6 @@ button { font: inherit; }
 
 .hero {
   position: relative;
-  min-height: 100svh;
   overflow: hidden;
   isolation: isolate;
   background: var(--ink);
@@ -92,13 +91,13 @@ button { font: inherit; }
 .hero-inner {
   position: relative;
   z-index: 2;
-  min-height: 100svh;
+  min-height: min(42rem, 100svh);
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: flex-end;
   gap: 2rem;
-  padding-top: 10rem;
-  padding-bottom: 5rem;
+  padding-top: clamp(7rem, 16svh, 9rem);
+  padding-bottom: clamp(2rem, 6svh, 3.5rem);
 }
 
 .hero-smoke,
@@ -126,13 +125,13 @@ button { font: inherit; }
 .eyebrow { margin: 0 0 1.5rem; color: var(--accent); }
 h1, h2, h3, p { margin-top: 0; }
 h1, h2 { font-family: var(--display); font-style: italic; font-weight: 400; letter-spacing: -0.045em; }
-h1 { max-width: 9ch; margin-bottom: 2rem; font-size: clamp(5rem, 18vw, 14rem); line-height: 0.78; }
+h1 { max-width: 9ch; margin-bottom: 1.5rem; font-size: clamp(4rem, min(16vw, 23svh), 12rem); line-height: 0.84; }
 h2 { max-width: 12ch; margin-bottom: 2rem; font-size: clamp(3rem, 8vw, 7.5rem); line-height: 0.9; }
 h1 em, h2 em { color: var(--accent); }
 
 .hero-intro {
   max-width: 32rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
   color: var(--muted);
   font-size: clamp(1rem, 2vw, 1.2rem);
   line-height: 1.65;
@@ -140,6 +139,7 @@ h1 em, h2 em { color: var(--accent); }
 
 .text-link {
   display: inline-flex;
+  min-height: 44px;
   gap: 0.75rem;
   align-items: center;
   padding-bottom: 0.5rem;
@@ -151,22 +151,33 @@ h1 em, h2 em { color: var(--accent); }
 }
 
 .hero-index { display: grid; justify-items: center; gap: 0.75rem; color: var(--muted); }
-.hero-index i { display: block; width: 1px; height: 8rem; background: var(--accent); }
+.hero-index i { display: block; width: 1px; height: clamp(3rem, 15svh, 7rem); background: var(--accent); }
 
 .manifesto, .work, .about, .footer {
-  padding-top: clamp(7rem, 15vw, 13rem);
-  padding-bottom: clamp(7rem, 15vw, 13rem);
+  padding-block: clamp(3rem, 7vw, 6rem);
   border-top: 1px solid var(--line);
 }
 
-.manifesto h2 { max-width: 15ch; }
+.manifesto { padding-block: clamp(2rem, 4.5vw, 4rem); }
+.manifesto .eyebrow { margin-bottom: 0.75rem; }
+.manifesto h2 {
+  max-width: 24ch;
+  margin-bottom: 0;
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  line-height: 1;
+}
 .section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; }
 .section-heading h2 { margin-bottom: 0; }
 
-.work-project {
-  margin-top: 5rem;
-  padding: 2rem 0;
+.work .section-heading { display: grid; justify-content: start; gap: 0.75rem; }
+.work .section-heading .eyebrow { margin-bottom: 0; }
+.work .section-heading h2 { max-width: 24ch; font-size: clamp(2.75rem, 6vw, 5.5rem); }
+.work-list {
+  margin-top: clamp(1.75rem, 4vw, 3rem);
   border-top: 1px solid var(--line);
+}
+.work-project {
+  padding-block: clamp(1.5rem, 3vw, 2.5rem);
   border-bottom: 1px solid var(--line);
 }
 
@@ -200,7 +211,7 @@ h1 em, h2 em { color: var(--accent); }
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(12rem, 0.75fr);
   gap: clamp(2rem, 6vw, 6rem);
-  margin: 3rem 0 0 6rem;
+  margin: clamp(1.5rem, 3vw, 2.5rem) 0 0 6rem;
 }
 .work-project-details .eyebrow { margin-bottom: 1rem; }
 .work-contributions, .work-technologies { padding: 0; margin: 0; list-style: none; }
@@ -210,14 +221,20 @@ h1 em, h2 em { color: var(--accent); }
 .work-technologies { display: flex; flex-wrap: wrap; gap: 0.6rem; }
 .work-technologies li { padding: 0.6rem 0.75rem; border: 1px solid var(--line); color: var(--bone); font-size: 0.85rem; }
 
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 10vw, 10rem); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.75rem, 6vw, 6rem);
+  margin-top: clamp(1.75rem, 4vw, 3rem);
+}
 .stack-list { display: grid; gap: 2.5rem; }
 .stack-group { padding-top: 1rem; border-top: 1px solid var(--line); }
 .stack-group h3 { margin-bottom: 1.25rem; color: var(--muted); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; }
 .stack-group ul { display: flex; flex-wrap: wrap; gap: 0.6rem; padding: 0; margin: 0; list-style: none; }
 .stack-group li { padding: 0.65rem 0.8rem; border: 1px solid var(--line); color: var(--bone); }
 
-.education-list { margin-top: 5rem; border-top: 1px solid var(--line); }
+.education { padding-bottom: clamp(3rem, 7vw, 6rem); }
+.education-list { margin-top: clamp(1.75rem, 4vw, 3rem); border-top: 1px solid var(--line); }
 .education-item {
   display: grid;
   grid-template-columns: minmax(10rem, 0.75fr) minmax(0, 2fr) minmax(10rem, 0.75fr);
@@ -320,17 +337,26 @@ section[id], footer[id] { scroll-margin-top: 6rem; }
     letter-spacing: 0.06em;
   }
   .site-header nav a { padding-inline: 0.1rem; }
-  .hero, .hero-inner { min-height: 90svh; }
-  .hero-inner { grid-template-columns: 1fr; }
+  .hero-inner {
+    min-height: min(33rem, 85svh);
+    grid-template-columns: 1fr;
+    align-items: center;
+    padding-block: calc(5.25rem + env(safe-area-inset-top, 0px)) 2rem;
+  }
+  .hero .eyebrow { margin-bottom: 1rem; }
+  h1 { font-size: clamp(4rem, 17vw, 7rem); }
   .hero-index { display: none; }
   .section-heading, .about-grid, .footer { grid-template-columns: 1fr; display: grid; }
+  .section-heading { gap: 0.75rem; }
+  .section-heading .eyebrow { margin-bottom: 0; }
   .education-item { grid-template-columns: 1fr; gap: 0.65rem; }
   .education-status { justify-self: start; text-align: left; }
   .work-project-heading { grid-template-columns: 2rem minmax(0, 1fr); gap: 1rem; }
   .project-links { grid-column: 2; grid-row: 2; justify-self: start; align-items: flex-start; text-align: left; }
-  .work-project-details { grid-template-columns: 1fr; gap: 2rem; margin: 2.5rem 0 0 3rem; }
+  .work-project-details { grid-template-columns: 1fr; gap: 1.5rem; margin: 1.5rem 0 0 3rem; }
   .footer-meta { justify-items: start; padding-right: 0; }
   .contact-links { justify-content: flex-start; gap: 0.5rem 1rem; }
+  section[id], footer[id] { scroll-margin-top: calc(4rem + env(safe-area-inset-top, 0px)); }
   .back-to-top {
     right: max(1rem, env(safe-area-inset-right, 0px));
     bottom: max(1rem, env(safe-area-inset-bottom, 0px));
@@ -344,7 +370,6 @@ section[id], footer[id] { scroll-margin-top: 6rem; }
   .brand { font-size: 0.92rem; }
   .site-header nav { gap: 0.3rem; font-size: 0.52rem; }
   .section-shell { width: min(100% - 2rem, 80rem); }
-  h1 { font-size: clamp(4.25rem, 20vw, 5rem); }
   h2 { font-size: clamp(2.7rem, 12vw, 3.2rem); }
 }
 

@@ -33,6 +33,7 @@ export const projects = [
       "Criei uma primeira tela da área do estudante para visualizar processos seletivos, com dados simulados.",
     ],
     technologies: ["Java 17", "Spring Boot", "MySQL", "Angular", "TypeScript"],
+    liveDemo: { url: "https://caes.ufac.br/login", label: "Acessar aplicação" },
     repository: null,
   },
   {
@@ -47,6 +48,7 @@ export const projects = [
       "Registrei o histórico das partidas no armazenamento local e integrei os dados ao perfil.",
     ],
     technologies: ["Kotlin", "Jetpack Compose", "Retrofit", "NASA APIs"],
+    liveDemo: null,
     repository: { url: "https://github.com/aguiarlucas2703/Astros", label: "Ver código" },
   },
   {
@@ -61,6 +63,7 @@ export const projects = [
       "Desenvolvi a tradução de ingredientes e receitas para português, com cache local.",
     ],
     technologies: ["React Native", "Expo", "JavaScript", "AsyncStorage", "TheMealDB API"],
+    liveDemo: { url: "https://smartfridge1.vercel.app/", label: "Visitar aplicação" },
     repository: { url: "https://github.com/aguiarlucas2703/SmartFridge", label: "Ver código" },
   },
 ] as const;

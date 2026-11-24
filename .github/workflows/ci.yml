@@ -9,7 +9,9 @@ on:
       - main
 
 permissions:
+  actions: read
   contents: read
+  statuses: write
 
 jobs:
   quality:
@@ -39,3 +41,9 @@ jobs:
 
       - name: Build for production
         run: npm run build
+
+      - name: Report CI status to Vercel
+        if: always()
+        uses: vercel/repository-dispatch/actions/status@v1
+        with:
+          name: Vercel - portfolio: quality

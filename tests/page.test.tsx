@@ -44,6 +44,10 @@ describe("portfolio home", () => {
     expect(screen.getByText(/Capacitação Web Full-stack WebAcademy/)).toBeInTheDocument();
     expect(caes.getByText(/endpoints REST para consulta, criação, atualização e remoção de estudantes/i)).toBeInTheDocument();
     expect(caes.getByText(/Repositório privado/)).toBeInTheDocument();
+    const caesDemo = caes.getByRole("link", { name: /Acessar aplicação: CAES/i });
+    expect(caesDemo).toHaveAttribute("href", "https://caes.ufac.br/login");
+    expect(caesDemo).toHaveAttribute("target", "_blank");
+    expect(caesDemo).toHaveAttribute("rel", "noopener noreferrer");
     expect(caes.getByText("Spring Boot")).toBeInTheDocument();
     expect(caes.getByText("Angular")).toBeInTheDocument();
   });
@@ -57,6 +61,10 @@ describe("portfolio home", () => {
     );
     expect(screen.getByText(/acompanhamento da posição da ISS/i)).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "SmartFridge" })).toBeInTheDocument();
+    const smartFridgeDemo = screen.getByRole("link", { name: /Visitar aplicação: SmartFridge/i });
+    expect(smartFridgeDemo).toHaveAttribute("href", "https://smartfridge1.vercel.app/");
+    expect(smartFridgeDemo).toHaveAttribute("target", "_blank");
+    expect(smartFridgeDemo).toHaveAttribute("rel", "noopener noreferrer");
     expect(screen.getByRole("link", { name: /Ver código: SmartFridge/i })).toHaveAttribute(
       "href",
       "https://github.com/aguiarlucas2703/SmartFridge",

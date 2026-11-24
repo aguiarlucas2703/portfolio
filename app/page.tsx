@@ -69,19 +69,32 @@ export default function Home() {
                     <h3>{project.title}</h3>
                     <p className="work-summary">{project.summary}</p>
                   </div>
-                  {project.repository ? (
-                    <a
-                      className="project-repository-link"
-                      href={project.repository.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={`${project.repository.label}: ${project.title} (abre em nova aba)`}
-                    >
-                      {project.repository.label} <span aria-hidden="true">↗</span>
-                    </a>
-                  ) : (
-                    <span className="work-status">Repositório privado</span>
-                  )}
+                  <div className="project-links">
+                    {project.liveDemo && (
+                      <a
+                        className="project-link"
+                        href={project.liveDemo.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${project.liveDemo.label}: ${project.title} (abre em nova aba)`}
+                      >
+                        {project.liveDemo.label} <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
+                    {project.repository ? (
+                      <a
+                        className="project-link"
+                        href={project.repository.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${project.repository.label}: ${project.title} (abre em nova aba)`}
+                      >
+                        {project.repository.label} <span aria-hidden="true">↗</span>
+                      </a>
+                    ) : (
+                      <span className="work-status">Repositório privado</span>
+                    )}
+                  </div>
                 </div>
                 <div className="work-project-details">
                   <div>

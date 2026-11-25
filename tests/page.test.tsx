@@ -3,6 +3,18 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import Home from "../app/page";
 
+function mockGalleryDialog(project: string) {
+  const dialog = screen.getByRole("heading", { name: project }).closest("article")!.querySelector("dialog")!;
+  dialog.showModal = vi.fn(() => {
+    dialog.setAttribute("open", "");
+    within(dialog).getByRole("button", { name: "Fechar galeria" }).focus();
+  });
+  dialog.close = vi.fn(() => {
+    dialog.removeAttribute("open");
+    dialog.dispatchEvent(new Event("close"));
+  });
+}
+
 describe("portfolio home", () => {
   it("apresenta o nome e a especialidade de Lucas", () => {
     render(<Home />);
@@ -94,15 +106,7 @@ describe("portfolio home", () => {
   it("carrega uma captura por vez e apenas depois de abrir a galeria do SmartFridge", async () => {
     const user = userEvent.setup();
     const { container } = render(<Home />);
-    const dialog = container.querySelector("dialog")!;
-    dialog.showModal = vi.fn(() => {
-      dialog.setAttribute("open", "");
-      within(dialog).getByRole("button", { name: "Fechar galeria" }).focus();
-    });
-    dialog.close = vi.fn(() => {
-      dialog.removeAttribute("open");
-      dialog.dispatchEvent(new Event("close"));
-    });
+    mockGalleryDialog("SmartFridge");
 
     expect(container.querySelector(".project-gallery-image")).not.toBeInTheDocument();
     await user.click(screen.getByRole("button", { name: "Ver telas do SmartFridge" }));
@@ -119,6 +123,32 @@ describe("portfolio home", () => {
     await user.click(gallery.getByRole("button", { name: "Fechar galeria" }));
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     expect(container.querySelector(".project-gallery-image")).not.toBeInTheDocument();
+  });
+
+  it("mostra as três capturas horizontais do CAES e permite ampliar a tela atual", async () => {
+    const user = userEvent.setup();
+    const { container } = render(<Home />);
+    mockGalleryDialog("CAES");
+
+    expect(container.querySelector(".project-gallery-image")).not.toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: "Ver telas do CAES" }));
+    const dialog = screen.getByRole("dialog", { name: "Telas do CAES" });
+    expect(dialog).toHaveAttribute("data-layout", "landscape");
+    const gallery = within(dialog);
+    const enlarge = gallery.getByRole("link", { name: /Ampliar imagem/ });
+    expect(enlarge).toHaveAttribute("target", "_blank");
+    expect(enlarge).toHaveAttribute("rel", "noopener noreferrer");
+
+    const files = ["portal-de-editais", "analise-socioeconomica", "processos-seletivos"];
+    for (const [index, file] of files.entries()) {
+      const path = `/projects/caes/${file}.webp`;
+      expect(gallery.getByRole("img")).toHaveAttribute("src", path);
+      expect(enlarge).toHaveAttribute("href", path);
+      expect(gallery.getByText(`${index + 1} de 3`)).toBeInTheDocument();
+      if (index < files.length - 1) {
+        await user.click(gallery.getByRole("button", { name: "Próxima tela" }));
+      }
+    }
   });
 
   it("inclui Kotlin entre as tecnologias já utilizadas", () => {

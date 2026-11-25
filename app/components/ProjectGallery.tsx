@@ -16,6 +16,7 @@ export function ProjectGallery({ project, screenshots }: ProjectGalleryProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const screenshot = activeIndex === null ? null : screenshots[activeIndex];
   const hasMultipleScreens = screenshots.length > 1;
+  const isLandscape = screenshots.every(({ width, height }) => width > height);
 
   function openGallery() {
     dialogRef.current?.showModal();
@@ -50,6 +51,7 @@ export function ProjectGallery({ project, screenshots }: ProjectGalleryProps) {
       <dialog
         ref={dialogRef}
         className="project-gallery"
+        data-layout={isLandscape ? "landscape" : undefined}
         aria-labelledby={headingId}
         onKeyDown={handleKeyDown}
         onClose={() => setActiveIndex(null)}
@@ -89,10 +91,23 @@ export function ProjectGallery({ project, screenshots }: ProjectGalleryProps) {
                     <ChevronLeft size={21} aria-hidden="true" />
                   </button>
                 )}
-                <p className="project-gallery-caption" aria-live="polite" aria-atomic="true">
-                  <span>{screenshot.title}</span>
-                  <span>{activeIndex + 1} de {screenshots.length}</span>
-                </p>
+                <div className="project-gallery-caption">
+                  <p aria-live="polite" aria-atomic="true">
+                    <span>{screenshot.title}</span>
+                    <span>{activeIndex + 1} de {screenshots.length}</span>
+                  </p>
+                  {isLandscape && (
+                    <a
+                      className="project-gallery-enlarge"
+                      href={screenshot.src}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Ampliar imagem (abre em nova aba)"
+                    >
+                      Ampliar imagem <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                </div>
                 {hasMultipleScreens && (
                   <button
                     type="button"

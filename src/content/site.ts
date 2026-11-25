@@ -27,6 +27,30 @@ export type ProjectScreenshot = {
   alt: string;
 };
 
+const caesScreenshots: readonly ProjectScreenshot[] = [
+  {
+    src: "/projects/caes/portal-de-editais.webp",
+    width: 1870,
+    height: 968,
+    title: "Portal de editais",
+    alt: "Portal público de editais da UFAC com o formulário de acesso pelo ID UFAC.",
+  },
+  {
+    src: "/projects/caes/analise-socioeconomica.webp",
+    width: 960,
+    height: 424,
+    title: "Análise socioeconômica",
+    alt: "Painel da equipe com atalhos para análise de formulários, solicitações de atualização e ranking socioeconômico.",
+  },
+  {
+    src: "/projects/caes/processos-seletivos.webp",
+    width: 869,
+    height: 428,
+    title: "Processos seletivos",
+    alt: "Área do estudante com filtros e uma lista de editais, prazos, status e opções de inscrição.",
+  },
+];
+
 const smartFridgeScreenshots: readonly ProjectScreenshot[] = [
   {
     src: "/projects/smartfridge/boas-vindas.webp",
@@ -88,7 +112,7 @@ export const projects = [
     technologies: ["Java 17", "Spring Boot", "MySQL", "Angular", "TypeScript"],
     liveDemoUrl: "https://caes.ufac.br/login",
     repository: null,
-    screenshots: null,
+    screenshots: caesScreenshots,
   },
   {
     number: "02",

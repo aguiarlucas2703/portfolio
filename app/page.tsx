@@ -151,7 +151,7 @@ export default function Home() {
           id="education"
           aria-labelledby="education-title"
         >
-          <h2 className="eyebrow education-title" id="education-title">Formação</h2>
+          <h2 id="education-title">Formação</h2>
           <figure className="education-quote">
             <blockquote cite="https://prefeitura.sp.gov.br/web/cultura/w/bibliotecas/bibliotecas_bairro/bibliotecas_a_l/claricelispector/5154">
               <p>“Renda-se, como eu me rendi. Mergulhe no que você não conhece como eu mergulhei.”</p>

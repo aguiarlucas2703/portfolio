@@ -346,11 +346,6 @@ html:has(.project-gallery[open]) { overflow: hidden; }
 .stack-group li { padding: 0.65rem 0.8rem; border: 1px solid var(--line); color: var(--bone); }
 
 .education { padding-bottom: clamp(3rem, 7vw, 6rem); }
-.education-title {
-  margin-bottom: 0.85rem;
-  font: normal 400 0.68rem/1.5 var(--sans);
-  letter-spacing: 0.2em;
-}
 .education-quote { margin: 0; }
 .education-quote blockquote {
   max-width: 27ch;

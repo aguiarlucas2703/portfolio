@@ -1,5 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import userEvent from "@testing-library/user-event";
+import { describe, expect, it, vi } from "vitest";
 import Home from "../app/page";
 
 describe("portfolio home", () => {
@@ -61,7 +62,7 @@ describe("portfolio home", () => {
     );
     expect(screen.getByText(/acompanhamento da posição da ISS/i)).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "SmartFridge" })).toBeInTheDocument();
-    const smartFridgeDemo = screen.getByRole("link", { name: /Visitar aplicação: SmartFridge/i });
+    const smartFridgeDemo = screen.getByRole("link", { name: /Acessar aplicação: SmartFridge/i });
     expect(smartFridgeDemo).toHaveAttribute("href", "https://smartfridge1.vercel.app/");
     expect(smartFridgeDemo).toHaveAttribute("target", "_blank");
     expect(smartFridgeDemo).toHaveAttribute("rel", "noopener noreferrer");
@@ -70,6 +71,36 @@ describe("portfolio home", () => {
       "https://github.com/aguiarlucas2703/SmartFridge",
     );
     expect(screen.getByText(/quantidade de ingredientes coincidentes/i)).toBeInTheDocument();
+  });
+
+  it("carrega uma captura por vez e apenas depois de abrir a galeria do SmartFridge", async () => {
+    const user = userEvent.setup();
+    const { container } = render(<Home />);
+    const dialog = container.querySelector("dialog")!;
+    dialog.showModal = vi.fn(() => {
+      dialog.setAttribute("open", "");
+      within(dialog).getByRole("button", { name: "Fechar galeria" }).focus();
+    });
+    dialog.close = vi.fn(() => {
+      dialog.removeAttribute("open");
+      dialog.dispatchEvent(new Event("close"));
+    });
+
+    expect(container.querySelector(".project-gallery-image")).not.toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: "Ver telas do SmartFridge" }));
+    const gallery = within(screen.getByRole("dialog", { name: "Telas do SmartFridge" }));
+    expect(gallery.getByRole("img")).toHaveAttribute("src", "/projects/smartfridge/boas-vindas.webp");
+    expect(gallery.getByText("1 de 6")).toBeInTheDocument();
+
+    await user.click(gallery.getByRole("button", { name: "Próxima tela" }));
+    expect(gallery.getByRole("img")).toHaveAttribute("src", "/projects/smartfridge/inicio.webp");
+    expect(gallery.getByText("2 de 6")).toBeInTheDocument();
+    await user.keyboard("{ArrowLeft}");
+    expect(gallery.getByText("1 de 6")).toBeInTheDocument();
+
+    await user.click(gallery.getByRole("button", { name: "Fechar galeria" }));
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(container.querySelector(".project-gallery-image")).not.toBeInTheDocument();
   });
 
   it("inclui Kotlin entre as tecnologias já utilizadas", () => {

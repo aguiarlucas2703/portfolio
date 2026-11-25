@@ -19,6 +19,59 @@ export const stackGroups = [
   },
 ] as const;
 
+export type ProjectScreenshot = {
+  src: string;
+  width: number;
+  height: number;
+  title: string;
+  alt: string;
+};
+
+const smartFridgeScreenshots: readonly ProjectScreenshot[] = [
+  {
+    src: "/projects/smartfridge/boas-vindas.webp",
+    width: 323,
+    height: 713,
+    title: "Boas-vindas",
+    alt: "Criação do perfil com escolha de avatar e campo para o nome.",
+  },
+  {
+    src: "/projects/smartfridge/inicio.webp",
+    width: 326,
+    height: 711,
+    title: "Início",
+    alt: "Página inicial com o total de ingredientes, receitas favoritas e um atalho para sugestões.",
+  },
+  {
+    src: "/projects/smartfridge/despensa.webp",
+    width: 324,
+    height: 710,
+    title: "Despensa",
+    alt: "Despensa com busca e seleção de ingredientes por categoria.",
+  },
+  {
+    src: "/projects/smartfridge/receitas.webp",
+    width: 321,
+    height: 712,
+    title: "Receitas sugeridas",
+    alt: "Lista de receitas com filtros, porcentagem de compatibilidade e contagem dos ingredientes que faltam.",
+  },
+  {
+    src: "/projects/smartfridge/detalhe-da-receita.webp",
+    width: 319,
+    height: 709,
+    title: "Detalhe da receita",
+    alt: "Receita de curry traduzida, com a compatibilidade e a lista de ingredientes disponíveis e faltantes.",
+  },
+  {
+    src: "/projects/smartfridge/menu.webp",
+    width: 324,
+    height: 711,
+    title: "Menu",
+    alt: "Menu lateral com atalhos para a despensa, dicas contra desperdício, conversor de medidas e favoritos.",
+  },
+];
+
 export const projects = [
   {
     number: "01",
@@ -33,8 +86,9 @@ export const projects = [
       "Criei uma primeira tela da área do estudante para visualizar processos seletivos, com dados simulados.",
     ],
     technologies: ["Java 17", "Spring Boot", "MySQL", "Angular", "TypeScript"],
-    liveDemo: { url: "https://caes.ufac.br/login", label: "Acessar aplicação" },
+    liveDemoUrl: "https://caes.ufac.br/login",
     repository: null,
+    screenshots: null,
   },
   {
     number: "02",
@@ -48,8 +102,9 @@ export const projects = [
       "Registrei o histórico das partidas no armazenamento local e integrei os dados ao perfil.",
     ],
     technologies: ["Kotlin", "Jetpack Compose", "Retrofit", "NASA APIs"],
-    liveDemo: null,
+    liveDemoUrl: null,
     repository: { url: "https://github.com/aguiarlucas2703/Astros", label: "Ver código" },
+    screenshots: null,
   },
   {
     number: "03",
@@ -63,8 +118,9 @@ export const projects = [
       "Desenvolvi a tradução de ingredientes e receitas para português, com cache local.",
     ],
     technologies: ["React Native", "Expo", "JavaScript", "AsyncStorage", "TheMealDB API"],
-    liveDemo: { url: "https://smartfridge1.vercel.app/", label: "Visitar aplicação" },
+    liveDemoUrl: "https://smartfridge1.vercel.app/",
     repository: { url: "https://github.com/aguiarlucas2703/SmartFridge", label: "Ver código" },
+    screenshots: smartFridgeScreenshots,
   },
 ] as const;
 

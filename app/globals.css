@@ -221,6 +221,86 @@ h1 em, h2 em { color: var(--accent); }
   transition: color 180ms ease;
 }
 .project-link:hover, .project-link:focus-visible { color: var(--bone); }
+.project-gallery-trigger {
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid var(--accent);
+  background: transparent;
+  cursor: pointer;
+}
+
+html:has(.project-gallery[open]) { overflow: hidden; }
+
+.project-gallery {
+  width: min(100% - 1.5rem, 32rem);
+  max-width: none;
+  max-height: calc(100dvh - 1.5rem);
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  background: #131210;
+  color: var(--bone);
+  color-scheme: dark;
+  overscroll-behavior: contain;
+}
+
+.project-gallery::backdrop { background: rgb(0 0 0 / 0.78); }
+.project-gallery-panel {
+  display: grid;
+  gap: 0.75rem;
+  padding: clamp(0.75rem, 3vw, 1.25rem);
+}
+.project-gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+.project-gallery-header h2 {
+  max-width: none;
+  margin: 0;
+  font-size: clamp(1.25rem, 4vw, 1.75rem);
+  line-height: 1.1;
+}
+.project-gallery-control {
+  display: grid;
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+}
+.project-gallery-control:hover { border-color: var(--accent); color: var(--bone); }
+.project-gallery-image {
+  display: block;
+  justify-self: center;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: min(42rem, max(7rem, calc(100dvh - 11.5rem)));
+  object-fit: contain;
+  border-radius: 0.5rem;
+}
+.project-gallery-navigation {
+  display: grid;
+  grid-template-columns: 2.75rem minmax(0, 1fr) 2.75rem;
+  align-items: center;
+  gap: 0.5rem;
+}
+.project-gallery-caption {
+  display: grid;
+  grid-column: 2;
+  gap: 0.2rem;
+  margin: 0;
+  text-align: center;
+}
+.project-gallery-caption span:last-child { color: var(--muted); font-size: 0.8rem; }
+
 .work-project-details {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(12rem, 0.75fr);

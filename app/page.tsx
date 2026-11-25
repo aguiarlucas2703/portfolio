@@ -2,6 +2,7 @@ import { education, profile, projects, stackGroups } from "../src/content/site";
 import { GitBranch, Mail } from "lucide-react";
 import { BackToTop } from "./components/BackToTop";
 import { LegoshiWalk } from "./components/LegoshiWalk";
+import { ProjectGallery } from "./components/ProjectGallery";
 import { SmokeCanvas } from "./components/SmokeCanvas";
 
 export default function Home() {
@@ -66,15 +67,18 @@ export default function Home() {
                     <p className="work-summary">{project.summary}</p>
                   </div>
                   <div className="project-links">
-                    {project.liveDemo && (
+                    {project.screenshots?.length ? (
+                      <ProjectGallery project={project.title} screenshots={project.screenshots} />
+                    ) : null}
+                    {project.liveDemoUrl && (
                       <a
                         className="project-link"
-                        href={project.liveDemo.url}
+                        href={project.liveDemoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label={`${project.liveDemo.label}: ${project.title} (abre em nova aba)`}
+                        aria-label={`Acessar aplicação: ${project.title} (abre em nova aba)`}
                       >
-                        {project.liveDemo.label} <span aria-hidden="true">↗</span>
+                        Acessar aplicação <span aria-hidden="true">↗</span>
                       </a>
                     )}
                     {project.repository ? (

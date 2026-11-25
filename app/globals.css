@@ -281,8 +281,7 @@ html:has(.project-gallery[open]) { overflow: hidden; }
   justify-self: center;
   width: auto;
   max-width: 100%;
-  height: auto;
-  max-height: min(42rem, max(7rem, calc(100dvh - 11.5rem)));
+  height: min(42rem, max(7rem, calc(100dvh - 11.5rem)));
   object-fit: contain;
   border-radius: 0.5rem;
 }

@@ -37,6 +37,24 @@ describe("portfolio home", () => {
     expect(github.querySelector("svg")).toHaveAttribute("aria-hidden", "true");
   });
 
+  it("exibe os títulos, a citação e o convite escolhidos para as seções", () => {
+    render(<Home />);
+    expect(screen.getByRole("heading", { name: "Projetos em que já trabalhei." })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Sobre e stack" })).toBeInTheDocument();
+
+    const formation = within(screen.getByRole("region", { name: "Formação" }));
+    expect(formation.getByRole("blockquote")).toHaveTextContent(
+      "Renda-se, como eu me rendi. Mergulhe no que você não conhece como eu mergulhei.",
+    );
+    expect(formation.getByText("— Clarice Lispector")).toBeInTheDocument();
+
+    expect(screen.getByText("Vamos conversar?")).toBeInTheDocument();
+    expect(screen.getByRole("heading", {
+      name: "Uma ideia boa pode surgir de uma pergunta que pode parecer boba.",
+    })).toBeInTheDocument();
+    expect(screen.getByText("Algum projeto em mente? Entre em contato!")).toBeInTheDocument();
+  });
+
   it("apresenta o CAES, seu contexto, contribuições e tecnologias", () => {
     render(<Home />);
     const caesCard = screen.getByRole("heading", { name: "CAES" }).closest("article");

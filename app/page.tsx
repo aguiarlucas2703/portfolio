@@ -53,7 +53,7 @@ export default function Home() {
           <div className="section-heading">
             <p className="eyebrow">Projetos selecionados</p>
             <h2 id="work-title">
-              Projetos que já saíram <em>do papel.</em>
+              Projetos em que já <em>trabalhei.</em>
             </h2>
           </div>
           <div className="work-list">
@@ -121,9 +121,8 @@ export default function Home() {
 
         <section className="about section-shell" id="about" aria-labelledby="about-title">
           <div className="section-heading">
-            <p className="eyebrow">Sobre e stack</p>
             <h2 id="about-title">
-              Em <em>movimento.</em>
+              Sobre e <em>stack</em>
             </h2>
           </div>
           <div className="about-grid">
@@ -152,12 +151,13 @@ export default function Home() {
           id="education"
           aria-labelledby="education-title"
         >
-          <div className="section-heading">
-            <p className="eyebrow">Formação</p>
-            <h2 id="education-title">
-              Uma base para seguir <em>evoluindo.</em>
-            </h2>
-          </div>
+          <h2 className="eyebrow education-title" id="education-title">Formação</h2>
+          <figure className="education-quote">
+            <blockquote cite="https://prefeitura.sp.gov.br/web/cultura/w/bibliotecas/bibliotecas_bairro/bibliotecas_a_l/claricelispector/5154">
+              <p>“Renda-se, como eu me rendi. Mergulhe no que você não conhece como eu mergulhei.”</p>
+            </blockquote>
+            <figcaption>— Clarice Lispector</figcaption>
+          </figure>
           <div className="education-list">
             {education.map((item) => (
               <article className="education-item" key={item.title}>
@@ -176,10 +176,11 @@ export default function Home() {
 
         <footer className="footer section-shell" id="contact">
           <div>
-            <p className="eyebrow">Vamos conversar</p>
+            <p className="eyebrow">Vamos conversar?</p>
             <h2>
-              Um projeto começa com uma <em>boa pergunta.</em>
+              Uma ideia boa pode surgir de uma pergunta que pode parecer <em>boba.</em>
             </h2>
+            <p className="contact-invitation">Algum projeto em mente? Entre em contato!</p>
           </div>
           <div className="footer-meta">
             <div className="contact-links" aria-label="Formas de contato">
